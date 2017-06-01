@@ -1,4 +1,4 @@
-# Building an Alexa skill with Red Hat MAP - Part I
+# Building an Alexa skill with Red Hat Mobile Application Platform - Part I
 
 Amazon's Alexa enabled devices, such as the Echo, Dot and most recently Tap provide a hands-free voice controlled environment, to make calls, send and receive messages, provide information and more — instantly. Alexa is the cloud-based voice service that powers this category of devices. All the user has to do is ask Alexa to perform an action.
 
@@ -16,17 +16,21 @@ By implementing skills for Alexa, developers create a new channel towards their 
 
 ## Introduction
 
-In this article series we'll leverage ASK to build Alexa skills providing news towards the end-user. Amazon's voice service will interact with a web service hosted in Red Hat MAP to pull RSS feeds from the internet:
+In this article series we'll leverage ASK to build Alexa skills providing news towards the end-user. Amazon's voice service will interact with a web service hosted in the Red Hat Mobile Application Platform (RHMAP) to pull RSS feeds from the internet:
 
 - Part I: Starting with a Flash Briefing Skill
 - Part II: Upgrading to a Custom Skill
-- Part III: Host your own web service / Skill with Red Hat MAP
+- Part III: Host your own web service / Skill with Red Hat Mobile Application Platform
 
 At the same time, the consumption of the news could also be leveraged in a mobile app or website.
 
-Therefore, this article is based on the following [sample projekt](https://github.com/mmetting/RHMAP-RSS-Reader-Demo) build with Red Hat MAP.
+[Red Hat Mobile Application Platform](https://www.redhat.com/en/technologies/mobile/application-platform) enables you to develop and deploy mobile apps in an agile and flexible manner. Take advantage of open technologies and standard toolkits while centralizing control over security, back-end integrations, and policy management.
+
+This article is based on the following [sample projekt](https://github.com/mmetting/RHMAP-RSS-Reader-Demo) build with RHMAP.
 
 ![alt text](./pictures/alexa_article_part_1_project.png "Project on RHMAP")
+
+In the left column, you can see the client app, which consumes the API provided by the Cloud Application (middle column). The Cloud Application enables developers to implement business logic on the server side and call out to back-end systems. Those back-ends are attached to the platform via the MBaaS Services (right column). MBaaS Services could be considered as reusable connectors, providing multiple projects / solutions on top of the platform reusable integration points towards the back-ends.
 
 ## Part I: Starting with a Flash Briefing Skill
 
@@ -34,15 +38,25 @@ The Flash Briefing Skill API defines the words users say to invoke the flash bri
 
 ![alt text](./pictures/alexa_article_part_1_flash_briefing.png "Flash Briefing Skill")
 
-The news feeds in our sample come from a public RSS feed and were added to a mobile solution project within Red Hat MAP via a [re-usable connector](https://github.com/mmetting/RSS-Reader-Demo-RSS-Connector).
+The news feeds in our sample come from a public RSS feed and were added to a mobile solution project within RHMAP via a [re-usable connector](https://github.com/mmetting/RSS-Reader-Demo-RSS-Connector).
 
 A web service created by a developer only needs to adhere to the [Flash Briefing Skill API](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/flash-briefing-skill-api-feed-reference) to provide information to the user.
 
-This can easily be done by utilising the Red Hat MAP API Mapper Service template, which is a visual tool for transforming the response of APIs. It allows developers to:
+This can easily be done by utilising the RHMAP API Mapper Service template, which is a visual tool for transforming the response of APIs. It allows developers to:
 
 - Rename Fields
 - Exclude fields which are not needed
 - Transform Fields using built-in transformations, or custom transforms they have defined themselves
+
+In order to adhere to the Flash Briefing API, we need to perform the following steps on RHMAP:
+
+1. Create a new MBaaS Service with the API Mapper template
+2. Make this service public
+3. Deploy the service to RHMAP's server side
+4. Add a mapping to change the response of the above mentioned re-usable connector to look like the Flash Briefing API. This involves:
+    - Changing attribute names
+    - Adding two custom transformation to alter the date format from the RSS feed and removing the 'Read more' string in the payload.
+5. Save the changes on the mapping and grab the exposed URL
 
 A full description of the Alexa RSS Mapping Service is provided [here](https://github.com/mmetting/Alexa-RSS-Mapper-Service).
 
@@ -58,7 +72,7 @@ The last step is creating the Flash Briefing Skill in the [Amazon's developer po
 
 ![alt text](./pictures/alexa_article_part_1_flash_briefing_configuration.png "Flash Briefing Configuration")
 
-> The URL points to the Alexa RSS Mapping Service on Red Hat MAP
+> The URL points to the Alexa RSS Mapping Service on RHMAP
 
 4. Test Your Flash Briefing Skill
 5. Optional - Prepare for publishing
