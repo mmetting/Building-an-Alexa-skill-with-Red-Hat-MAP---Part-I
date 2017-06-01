@@ -28,7 +28,7 @@ At the same time, the consumption of the news could also be leveraged in a mobil
 
 This article is based on the following [sample projekt](https://github.com/mmetting/RHMAP-RSS-Reader-Demo) build with RHMAP.
 
-![alt text](./pictures/alexa_article_part_1_project.png "Project on RHMAP")
+![Project on RHMAP](./pictures/alexa_article_part_1_project.png "Project on RHMAP")
 
 In the left column, you can see the client app, which consumes the API provided by the Cloud Application (middle column). The Cloud Application enables developers to implement business logic on the server side and call out to back-end systems. Those back-ends are attached to the platform via the MBaaS Services (right column). MBaaS Services could be considered as reusable connectors, providing multiple projects / solutions on top of the platform reusable integration points towards the back-ends.
 
@@ -36,7 +36,7 @@ In the left column, you can see the client app, which consumes the API provided 
 
 The Flash Briefing Skill API defines the words users say to invoke the flash briefing or news request and the format of the content so that Alexa can provide it to the user.
 
-![alt text](./pictures/alexa_article_part_1_flash_briefing.png "Flash Briefing Skill")
+![Flash Briefing Skill](./pictures/alexa_article_part_1_flash_briefing.png "Flash Briefing Skill")
 
 The news feeds in our sample come from a public RSS feed and were added to a mobile solution project within RHMAP via a [re-usable connector](https://github.com/mmetting/RSS-Reader-Demo-RSS-Connector).
 
@@ -60,7 +60,7 @@ In order to adhere to the Flash Briefing API, we need to perform the following s
 
 A full description of the Alexa RSS Mapping Service is provided [here](https://github.com/mmetting/Alexa-RSS-Mapper-Service).
 
-![alt text](./pictures/alexa_article_part_1_alexa_mapper.png "Alexa RSS Mapping Service")
+![Alexa RSS Mapping Service](./pictures/alexa_article_part_1_alexa_mapper.png "Alexa RSS Mapping Service")
 
 As the mapping service is defined and deployed publicly accessible, Amazon's voice service can directly call-out to our Alexa RSS Mapping Service to fetch news feeds.
 
@@ -70,7 +70,7 @@ The last step is creating the Flash Briefing Skill in the [Amazon's developer po
 2. Set a Name, Language and Error Message
 3. Add One or More Flash Briefing Feeds
 
-![alt text](./pictures/alexa_article_part_1_flash_briefing_configuration.png "Flash Briefing Configuration")
+![Flash Briefing Configuration](./pictures/alexa_article_part_1_flash_briefing_configuration.png "Flash Briefing Configuration")
 
 > The URL points to the Alexa RSS Mapping Service on RHMAP
 
