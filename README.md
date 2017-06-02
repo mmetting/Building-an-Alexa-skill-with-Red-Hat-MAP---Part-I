@@ -19,7 +19,7 @@ By implementing skills for Alexa, developers create a new channel towards their 
 In this article series we'll leverage ASK to build Alexa skills providing news towards the end-user. Amazon's voice service will interact with a web service hosted in the Red Hat Mobile Application Platform (RHMAP) to pull RSS feeds from the internet:
 
 - Part I: Starting with a Flash Briefing Skill
-- Part II: Upgrading to a Custom Skill
+- Part II: [Upgrading to a Custom Skill](https://github.com/mmetting/Building-an-Alexa-skill-with-Red-Hat-MAP---Part-II)
 - Part III: Host your own web service / Skill with Red Hat Mobile Application Platform
 
 At the same time, the consumption of the news could also be leveraged in a mobile app or website.
